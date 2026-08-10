@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}退会{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/unregister.css') }}">
+{% endblock %}
+{% block main %}
+    <h1>退会画面</h1>
+    退会するユーザー : {{user_name}}
+    <form action="{{ url_for('unregister') }}" method="post">
+        <div class="check-area">
+            <div class="text">
+                <p>
+                退会すると作成した文章、いいねが全て削除されることに同意します。
+                </p>
+            </div>
+           
+            <input type="checkbox" class="checkbox" id="check_" name="checkbox" required>
+            <label for="check_">
+                同意する
+            </label>
+        </div>
+        <div class="password-area form form-group">
+            <label for="password">パスワード</label>
+            <input type="password" name="password" id="password" placeholder="パスワード" required>
+        </div>
+        <div>
+            <button type="submit">退会する</button>
+        </div>
+    </form>
+        <div class="button-area">
+            <a href="/mypage">戻る</a>
+        </div>
+{% endblock %} 

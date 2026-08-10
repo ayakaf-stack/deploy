@@ -1,0 +1,300 @@
+:root {
+    --color-bg: #062c54;
+    --color-surface: #1a2834;
+    --color-text: #efe8d8;
+    --color-text-muted: #8ea2ab;
+    --color-gold: #c99a4a;
+    --color-red: #b8433f;
+    --color-border: rgba(239, 232, 216, 0.14);
+    --font-display: "Hiragino Mincho ProN", "HGS明朝E", serif;
+}
+
+.flash-message a {
+    display: inline;
+}
+
+/* -------------------- タブ(単語/文章) -------------------- */
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 320px;
+    margin: 0 auto 20px;
+    border: 1px solid var(--color-gold);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.toggle_btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-gold);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toggle_btn + .toggle_btn {
+    border-left: 1px solid var(--color-gold);
+}
+
+.toggle_btn.selected {
+    background: var(--color-gold);
+    color: var(--color-bg);
+    font-weight: 700;
+}
+
+/* -------------------- 検索・並び替え -------------------- */
+
+#search_input,
+#sort_select {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    border-radius: 2px;
+}
+
+#search_input::placeholder {
+    color: var(--color-text-muted);
+}
+
+#search_input:focus,
+#sort_select:focus,
+.genre_btn:focus-visible,
+.toggle_btn:focus-visible,
+.good-button:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+}
+
+/* -------------------- ジャンル選択(横並び・中央寄せ) -------------------- */
+
+#genre_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 28px;
+    max-width: 480px;
+}
+
+#genre_list li {
+    margin: 0;
+}
+
+.genre_btn {
+    background: transparent;
+    border: 1px solid var(--color-text-muted);
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.genre_btn:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+}
+
+.genre_btn.selected {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-bg);
+}
+
+/* -------------------- 一覧 -------------------- */
+
+#list_container {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 640px;
+}
+
+.word_item,
+.text_item {
+    position: relative;
+    padding: 28px 8px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.word_item:last-child,
+.text_item:last-child {
+    border-bottom: none;
+}
+
+/* 単語表示 */
+#word_text,
+.word_item .word_main {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+#word_reading,
+.word_item .word_reading {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+
+#word_mean,
+.word_item .word_mean,
+.text_item .text_body {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    max-width: 480px;
+    margin: 0 auto 18px;
+    line-height: 1.9;
+}
+
+.text_item .text_title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-gold);
+    margin-bottom: 10px;
+}
+
+.item_mean,.item_reading{
+    font-size: 80%;
+}
+
+.item_word{
+    font-size: 1.8rem;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* -------------------- いいねボタン(朱印風) -------------------- */
+
+.good-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.good-count {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    min-width: 1.2em;
+    text-align: left;
+}
+
+/* 文章作成リンク */
+.word_item a,
+#text_new_link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-gold);
+}
+
+/* -------------------- 該当なし表示 -------------------- */
+
+#no_result {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: 40px 0;
+    font-size: 0.95rem;
+}
+
+/* -------------------- フッター -------------------- */
+
+footer,
+.footer {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    margin-top: 60px;
+    letter-spacing: 0.08em;
+}
+
+/* -------------------- レスポンシブ -------------------- */
+
+@media (max-width: 480px) {
+    #word_text {
+        font-size: 1.5rem;
+    }
+
+    .tabs {
+        max-width: 100%;
+    }
+
+    #genre_list {
+        max-width: 100%;
+    }
+}
+
+.label {
+    font-size: 0.85rem;
+    display: inline-block;
+    width: 80px;
+    color: var(--color-text-muted);
+}
+
+.value {
+    color: var(--color-text);
+}
+
+.drawer_btn {
+    font-size: 0.85rem;
+    color: var(--color-gold);
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.drawer_content {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    max-width: 480px;
+    display: inline-block;
+    margin: 10px auto 0;
+    line-height: 1.9;
+    text-align: left;
+}
+
+.text_label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.text_title_display {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 14px;
+}

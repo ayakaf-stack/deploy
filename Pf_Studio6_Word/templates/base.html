@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美しい日本語</title>
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="site_title"><span>美しい日本語</span></a></header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block main %}
+        {% endblock %}
+    </main>
+    <footer class="footer"><p class="text-center">&copy;Studio6</p></footer>
+</body>
+</html>

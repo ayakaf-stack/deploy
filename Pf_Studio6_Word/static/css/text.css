@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+h3 {
+  font-size: 1.2rem;
+}
+
+.form-group {
+  display:flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.form-group label {
+  width: 100px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.titlearea ,.textarea{
+  width: 100%;
+  max-width: 500px;
+  resize: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+
+}
+
+.textarea {
+    height: 350px;
+}
+
+.form-actions {
+  margin: 1rem 0;
+}
+
+a {
+  margin-top: 2rem;
+}
+
+.cancel-area {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.cancel-area a {
+  display: inline-block;
+  margin-top: 0;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+/* 全体・共通打ち消し */
+
+body {
+    background-color: #062c54;
+    transition: background-color 1.0s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu a,#word_area a,a[href="/contents"] {
+    display: inline-block;
+}
+
+/* レイアウト */
+.box{
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 16px;
+    text-align: center;
+}
+
+/* メニュー */
+a[href="/contents"] {
+    margin: 0 auto 1.5rem;
+    font-size: 22px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+    margin: 0 auto 2.5rem;
+}
+
+/* 単語 */
+#word_area {
+    text-align: center;
+}
+
+#word_area p {
+    margin: 0.5rem 0;
+}
+
+#word_text {
+    font-size: 2.4rem;
+}
+
+#word_reading {
+    font-size: 1.2rem;
+}
+
+#word_mean {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    display: inline-block;
+    text-align: center;
+    max-width: 600px;
+    margin: 0.5rem auto 1.5rem;
+}
+
+/* ワードアクション */
+
+.word_action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+#text_new_link {
+    font-size: 1.1rem;
+}
+
+/* 文章 */
+#text_list_area {
+    margin-top: 3.5rem;
+    text-align: center;
+}
+
+/* 文章リスト領域 */
+.text_scroll_list {
+    max-height: 400px;
+    overflow-y: auto;
+    box-sizing: border-box;
+
+    width: 100%;
+    max-width: 640px; 
+    margin: 0 auto;
+
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.text_scroll_list::-webkit-scrollbar {
+    width: 1px;
+}
+
+.text_scroll_list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.text_scroll_list::-webkit-scrollbar-thumb {
+    background: rgba(239, 232, 216, 0.25);
+    border-radius: 3px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 480px;
+}
+
+.section-title::before,
+.section-title::after {
+    content: "";
+    flex: 1; 
+    height: 1px; 
+    background-color: rgba(239, 232, 216, 0.25); 
+}
+
+.text_item {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.text_label {
+    display: block;
+    font-size: 0.8rem;
+    color: #8ea2ab;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.text_title_display {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #efe8d8;
+    margin: 0 0 14px;
+}
+
+/* ドロワー */
+.text_drawer {
+    max-width: 450px;
+    margin: 0 auto 1rem; /* 左右中央配置 */
+}
+
+.drawer_btn {
+    font-size: 0.85rem;
+    color: #c99a4a;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 6px;
+    list-style: none;
+}
+
+.drawer_btn::-webkit-details-marker,
+.drawer_btn::marker {
+    display: none;
+}
+
+.drawer_content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    display: inline-block;
+    text-align: left;
+    max-width: 450px;
+    margin: 10px auto 0;
+}
+
+.no-text-message {
+    color: #8ea2ab;
+    font-size: 1rem;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+/* フォーム・いいね */
+.good-form {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0.5rem 0;
+}
+
+.good-count {
+    font-size: 0.9rem;
+    color: #8ea2ab;
+    min-width: 1.2em;
+    text-align: left;
+}
+
+#flash-messages {
+    max-width: 640px;
+    margin: 0 auto 20px;
+}
+
+.flash-message {
+    background: rgba(184, 67, 63, 0.14);
+    border: 1px solid var(--color-red);
+    color: var(--color-text);
+    padding: 10px 16px;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.flash-message a {
+    display: inline;
+}
+
+.text_label {
+    display: block;
+    font-size: 0.8rem;
+    color: #8ea2ab;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+}
+
+.text_title_display {
+    font-family: "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #efe8d8;
+    margin: 0 0 14px;
+}
+
+.drawer_btn {
+    font-size: 0.85rem;
+    color: #c99a4a;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 6px;
+    list-style: none;
+}
+
+.drawer_btn::-webkit-details-marker {
+    display: none;
+}
+
+.drawer_btn::marker {
+    display: none;
+}
+
+/* 親要素のスクロールブレを防ぐ */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
