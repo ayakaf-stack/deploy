@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}一覧{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contents.css') }}">
+{% endblock %}
+{% block main %}
+<script src="{{ url_for('static', filename='js/good.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/contents.js') }}" defer></script>
+
+<div class="tabs">
+    <button type="button" class="toggle_btn selected" data-type="word">単語</button>
+    <button type="button" class="toggle_btn" data-type="text">文章</button>
+</div>
+
+<form onsubmit="return false;">
+    <input type="search" id="search_input" placeholder="キーワードを入力">
+    
+        <ul id="genre_list" style="display: {{ 'flex' if content_type == 'word' else 'none' }};">
+            {% for genre in genres %}
+                <li>
+                    <button type="button" class="genre_btn" data-genre-id="{{ genre.id }}">{{ genre.genre }}</button>
+                </li>
+            {% endfor %}
+        </ul>
+
+    <select id="sort_select">
+        <option value="">並び替え</option>
+        <option value="aiueo_asc">あいうえお順(昇順)</option>
+        <option value="aiueo_desc">あいうえお順(降順)</option>
+        <option value="good_desc">いいねが多い順</option>
+    </select>
+</form>
+
+<ul id="list_container">
+    {% for item in items %}
+        {% if content_type == 'word' %}
+            <li class="word_item">
+                <p><span class="item_word">{{ item.word }}</span></p>
+                <p><span class="item_reading">【{{ item.reading }}】</span></p>
+                <p><span class="item_mean">{{ item.mean }} </span></p>
+                <form class="good-form" action="{{ url_for('good_word', word_id=item.id) }}" method="POST">
+                    <button type="submit" class="good-button{{ ' is-liked' if item.is_good else '' }}" aria-label="お気に入り">
+                        <svg class="bookmark-icon" width="18" height="22" viewBox="0 0 24 30">
+                            <path d="M5 3 H19 V27 L12 20.5 L5 27 Z"/>
+                        </svg>
+                    </button>
+                    <span class="good-count">{{ item.good_count }}</span>
+                </form>
+                <a href="{{ url_for('text_new', id=item.id) }}">文章作成</a>
+            </li>
+        {% else %}
+            <li class="text_item">
+                <span class="text_label">タイトル</span>
+                <p class="text_title_display">{{ item.title }}</p>
+
+                <details class="text_drawer">
+                    <summary class="drawer_btn">本文を表示</summary>
+                    <p class="drawer_content white-space">{{ item.main_text }}</p>
+                </details>
+
+                <form class="good-form" action="{{ url_for('good_text', text_id=item.id) }}" method="POST">
+                    <button type="submit" class="good-button{{ ' is-liked' if item.is_good else '' }}" aria-label="お気に入り">
+                        <svg class="bookmark-icon" width="18" height="22" viewBox="0 0 24 30">
+                            <path d="M5 3 H19 V27 L12 20.5 L5 27 Z"/>
+                        </svg>
+                    </button>
+                    <span class="good-count">{{ item.good_count }}</span>
+                </form>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<div id="no_result" style="display:none;">該当する内容がありません</div>
+
+{% endblock %}

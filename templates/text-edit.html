@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}文章編集{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/text.css') }}">
+{% endblock %}
+{% block main %}
+<h2>文章編集</h2>
+<form action="{{ url_for('text_edit', id=text.id)}}" method="post" class="text_form">
+    <input type="hidden" name="word" value="{{ word or '' }}">
+
+
+    {% if select_word %}
+        <h3>選択した単語：{{ select_word.word }}</h3>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="title" class="label">タイトル</label>
+        <input type="text" name="title" value="{{ title or text.title }}" placeholder="255文字以内" class="titlearea">
+    </div>
+    <div class="form-group">
+        <label for="main_text" class="label">本文</label>
+        <textarea name="main_text" placeholder="400文字以内" class="textarea">{{ main_text or text.main_text }}</textarea>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" name="text_status" value="0">投稿</button>
+        <button type="submit" name="text_status" value="1">下書き保存</button>
+    </div>
+
+</form>
+
+<form action="{{ url_for('text_delete', id=text.id) }}" method="post" onsubmit="return confirm('本当に削除しますか？');" class="delete_form">
+    <button type="submit" class="btn-delete">この文章を削除</button>
+</form>
+
+<div class="cancel-area">
+    <a href="{{ url_for('mypage') }}">キャンセル</a>
+</div>
+
+{% endblock %}

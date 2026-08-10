@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}新規登録{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+{% block main %}
+    <h1>新規登録</h1>
+
+    <form class="form" action="{{ url_for('register') }}" method="post">
+        <div class="form-group">
+            <label for="user_name">ユーザー名</label>
+            <input type="text" name="user_name" maxlength="255" id="user_name" placeholder="新規ユーザー" required >
+        </div>
+        <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" name="email" maxlength="255" id="email" placeholder="example@example.com" required >
+        </div>
+        <div class="form-group">
+            <label for="password">パスワード</label>
+            <input type="password" name="password" minlength="8" maxlength="16" id="password" placeholder="8~16文字以内で入力" >
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">新規登録</button>
+        </div>
+    </form>
+{% endblock %}

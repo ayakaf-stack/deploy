@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.form {
+  width: 400px;
+  margin: 50px auto;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  width: 200px;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 8px;
+}
+
+input::placeholder {
+  color: #b0b0b0;
+  opacity: 1;
+}
+
+button {
+  margin-top: 20px;
+}
+
+@media (width <= 400px){
+  .form-group {
+    flex-direction: column;
+  }
+}
+
